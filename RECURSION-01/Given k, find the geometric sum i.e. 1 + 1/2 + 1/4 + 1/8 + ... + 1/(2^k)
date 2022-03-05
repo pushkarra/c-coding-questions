@@ -1,0 +1,22 @@
+#include<iostream>
+#include<cmath>
+using namespace std;
+
+float sum(float a){
+	
+	if(a<=0){
+		return 1;
+	}
+	
+	float test=(0.5*(sum(a-1)));
+	return test+1;
+	
+}
+
+int main(){
+	float a,b=0;
+	cin>>a;
+	float result=sum(a);
+	cout<<result;
+	return 0;
+}
