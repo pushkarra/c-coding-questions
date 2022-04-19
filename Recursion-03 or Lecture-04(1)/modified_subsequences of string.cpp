@@ -62,7 +62,7 @@ int main(){
 	int n;
 	cout<<"Enter a number: ";
 	cin>>n;
-	string* output = new string[100];       //  dynamic string
+	string* output = new string[100];      
 	
 	int result = modified_subsequences(n,output);
 	

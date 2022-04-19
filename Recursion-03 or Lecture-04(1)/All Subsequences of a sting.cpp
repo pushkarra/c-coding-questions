@@ -9,14 +9,14 @@ int subsequences(string s, string str[]){
 	}
 	
 	string smallString = s.substr(1);                    // we are storing the substring of input string from index 1
-	int outputSize = subsequences(smallString,str);  // we are calling the recursive function here and storing the output
+	int outputSize = subsequences(smallString,str);  
 	
 	for(int i=0; i<outputSize;i++){
-		str[i+outputSize] = s[0]+str[i];            //as we are storing c in index 1 with concatenation with "";
+		str[i+outputSize] = s[0]+str[i];            
 	}
 	
-	return 2*outputSize;                           // the number of subsequences are in 2 ki power n;
-}
+	return 2*outputSize;                           
+	}
 
 
 int main(){
