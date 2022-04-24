@@ -3,12 +3,12 @@ using namespace std;
 
 int subsequences(string s, string str[]){ 
 
-	if(s.empty()){                                     // here we can also use s[0]=='\0' then...
+	if(s.empty()){                                     
 		str[0]="";
 		return 1;
 	}
 	
-	string smallString = s.substr(1);                    // we are storing the substring of input string from index 1
+	string smallString = s.substr(1);                    
 	int outputSize = subsequences(smallString,str);  
 	
 	for(int i=0; i<outputSize;i++){
