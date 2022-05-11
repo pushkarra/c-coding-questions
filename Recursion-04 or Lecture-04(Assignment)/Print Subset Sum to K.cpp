@@ -20,45 +20,53 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int subset(int a[],int n,int output[][200]){
+
+void subset(int a[],int n,int output[],int sz,int x){
 	
-	if(n<=0){
-		output[0][0]=0;
-		return 1;
+	int sum=0;
+	if(n==0){
+		
+		for(int k=0;k<sz;k++){
+			sum=sum+output[k];
+        }
+        if(sum==x){
+        	for(int k=0;k<sz;k++){
+		    	cout<<output[k]<<" ";
+            }
+            cout<<endl;
+        
+		}
+        return;
 	}
 	
-	int smalloutput = subset(a+1,n-1,output);
+	int temp[sz+1],i;
 	
-	for(int i=0; i<smalloutput;i++){
-		int num = output[i][0]+1;         // WE CONSIDERED A VARIABLE AS NUM FOR EASY UNDERSTANDING OF CODE
-		output[i+smalloutput][0] = num;
-		for(int j=num;j>1;j--){
-			output[i+smalloutput][j] = output[i][j-1];
-		} 
-		output[i+smalloutput][1] = a[0];
+	for(i=0;i<sz;i++){
+		temp[i]=output[i];
 	}
+	temp[i]=a[0];
 	
-	return 2*smalloutput;
+	subset(a+1,n-1,temp,sz+1,x);
+	subset(a+1,n-1,output,sz,x);
+
 }
 
 
 
+
+
 int main(){
-	int n,i;
+	int n,i,sz=0,x;
 	cout<<"enter the size of array ";
 	cin>>n;
-	int a[n],output[200][200];
+	int a[n],output[n];
 	cout<<"enter the elements inside the array ";
 	for(i=0;i<n;i++){
 		cin>>a[i];
 	}
+	cout<<"enter the sum of subsets ";
+	cin>>x;
 	
-	int result=subset(a,n,output);
-	for(i=0;i<result;i++){
-		for(int j=0;j<output[i][0];j++){
-			cout<<output[i][j+1]<<" ";
-        }
-        cout<<endl;
-	}
+	subset(a,n,output,sz,x);
 	
 }
